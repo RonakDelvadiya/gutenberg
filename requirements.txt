@@ -9,3 +9,4 @@ psycopg2
 psycopg2-binary
 psycopg[binary]
 django-filter
+dj_database_url

@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from .load_env_vars import var_settings
 from pathlib import Path
 from os import path
-import sys
+import sys, os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,8 +29,7 @@ SECRET_KEY = 'django-insecure-w@p#o46*!v+6s9!2mfn4qw0*sf5^vi7-bkhpp@crq&&_v-g8ne
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['.vercel.app', ".now.sh"]
 
 # Application definition
 
@@ -88,16 +88,8 @@ WSGI_APPLICATION = 'gutenberg.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': var_settings.DB_NAME,
-        'USER': var_settings.DB_USER,
-        'PASSWORD': var_settings.DB_PASSWORD,
-        'HOST': var_settings.DB_HOST,
-        'PORT': var_settings.DB_PORT
-    }
-}
+
+DATABASES = {'default' : dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -146,3 +138,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 25
 }
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+print("STATICFILES_DIRS",STATICFILES_DIRS)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')

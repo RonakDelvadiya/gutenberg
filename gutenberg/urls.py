@@ -25,15 +25,14 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Gutenberg API",
       default_version='v1',
-      description="API for accessing Project Gutenberg books",
+      description="API for accessing Project Gutenberg books"
    ),
    public=True,
-   permission_classes=(permissions.IsAuthenticated,),
+   permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('swagger/', login_required(schema_view.with_ui('swagger', cache_timeout=0)), name='schema-swagger-ui'),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('accounts/login/', admin.site.urls),
     path('api/books/', include('books.urls')), 
 ]
-
