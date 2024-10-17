@@ -138,9 +138,3 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 25
 }
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-print("STATICFILES_DIRS",STATICFILES_DIRS)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
