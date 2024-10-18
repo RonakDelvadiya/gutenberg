@@ -29,11 +29,12 @@ SECRET_KEY = 'django-insecure-w@p#o46*!v+6s9!2mfn4qw0*sf5^vi7-bkhpp@crq&&_v-g8ne
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', ".now.sh"]
+ALLOWED_HOSTS = ['.vercel.app', ".now.sh", "*"]
 
 # Application definition
 
 DEFAULT_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +58,7 @@ INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
