@@ -5,7 +5,6 @@ pydantic
 python-dotenv
 pydantic[dotenv]
 drf-yasg
-psycopg2
 psycopg2-binary
 psycopg[binary]
 django-filter
