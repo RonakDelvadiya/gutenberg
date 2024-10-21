@@ -7,8 +7,12 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "gutenberg/wsgi.py",
-        "maxDuration": 50
+        "dest": "gutenberg/wsgi.py"
       }
-    ]
+    ],
+    "functions": {
+    "app/api/**/*": {
+      "maxDuration": 50 // All functions can run for a maximum of 50 seconds
+    }
+  }
 }
