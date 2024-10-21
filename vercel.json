@@ -1,20 +1,15 @@
 {
-  "builds": [
-    {
-      "src": "gutenberg/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
+  "functions": {
+    "gutenberg/wsgi.py": {
+      "runtime": "python3.11",
+      "maxDuration": 50,
+      "memory": 1024
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
       "dest": "gutenberg/wsgi.py"
     }
-  ],
-  "functions": {
-    "app/api/**/*": {
-      "maxDuration": 50
-    }
-  }
+  ]
 }
