@@ -8,7 +8,7 @@
       {
         "src": "/(.*)",
         "dest": "gutenberg/wsgi.py",
-        "timeout": 50
+        "maxDuration": 50
       }
     ]
 }
